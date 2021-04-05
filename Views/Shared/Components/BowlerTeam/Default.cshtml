@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model  IEnumerable<Team>
+
+<!--
+    Dynamically creates the highlighted buttons    
+-->
+<a class="btn btn-block btn btn-outline-secondary" Index" asp-controller="Home" asp-route-team="">Home</a><br />
+
+@foreach(var x in Model)
+{
+    <a class="btn btn block @(x.TeamName == ViewBag.SelectedTeam ? "btn-primary" : "btn-outline-secondary")"
+       asp-action="Index" 
+       asp-controller="Home"
+       asp-route-team="@x.TeamId" 
+       asp-route-teamname="@x.TeamName">@x.TeamName
+        </a><br />
+}
